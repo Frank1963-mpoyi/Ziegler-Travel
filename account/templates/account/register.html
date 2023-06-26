@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+{% include 'apps/home/_includes/banner_top.html' %}
+
+<div class="page-section">
+    <div class="container ">
+        <h1 class="text-center wow fadeInUp"> Sign In </h1>
+
+        <form class="contact-form mt-3" method="POST">
+            {% csrf_token %}
+            <div class="row mb-3">
+                <!-- messgae for form level -->
+                <h5 style="color: red;">{{ register_form.non_field_errors }}</h5>
+
+                <div class="col-sm-12 py-2 wow fadeInRight">
+                    <label for="fullname">Fullname</label>
+                    <h6 style="color: red;">{{ register_form.errors.fullname }}</h6>
+                    {{ register_form.fullname }}
+                </div>
+
+                <div class="col-sm-12 py-2 wow fadeInRight">
+                    <label for="emailAddress">Email</label>
+                    <h6 style="color: red;">{{ register_form.errors.email }}</h6>
+                    {{ register_form.email }}
+                </div>
+
+
+                <div class="col-sm-12 py-2 wow fadeInUp">
+                    <label for="password">Password</label>
+                    <h6 style="color: red;">{{ register_form.errors.password }}</h6>
+                    {{ register_form.password }}
+                </div>
+
+                <div class="col-sm-12 py-2 wow fadeInUp">
+                    <label for="password1">Confirm Password</label>
+                    <h6 style="color: red;">{{ register_form.errors.password1 }}</h6>
+                    {{ register_form.password1 }}
+
+                </div>
+            </div>
+            {#{ register_form.as_p }#}
+            <input type="checkbox" onclick="myFunction()"> Show Password<br><br>
+            <button class="btn btn-primary  wow zoomIn mb-3" type="submit">Submit</button><br>
+            Do you Have an account ? Please <a href="{% url 'web:accounts:login' %}"> Login </a>
+        </form>
+    </div>
+</div>
+
+{% endblock content %}

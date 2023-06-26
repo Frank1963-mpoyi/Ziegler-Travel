@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{#% load crispy_forms_tags %#}
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+
+<form class="row g-3" method="post">
+    {% csrf_token %}
+
+    <div class="col-md-6">
+        <label for="inputEmail4" class="form-label">Typoe of Vehicle</label>
+        {#{form.fullname|as_crispy_field}#}
+        <input type="text" class="form-control" id="inputEmail4">
+    </div>
+
+    <div class="col-md-6">
+        <label for="inputPassword4" class="form-label">Date</label>
+        <input type="date" class="form-control" id="inputPassword4">
+    </div>
+
+    <div class="col-md-6">
+        <label for="inputCity" class="form-label">City</label>
+        <input type="text" class="form-control" id="inputCity">
+    </div>
+
+    <div class="col-12">
+        <button type="submit" class="btn btn-primary">Sign in</button>
+    </div>
+</form>
+
+{% endblock content %}
+
+
+
+<!-- <div class="row">
+    <div class="col">
+        <input type="text" class="form-control" placeholder="First name" aria-label="First name">
+    </div>
+    <div class="col">
+        <input type="text" class="form-control" placeholder="Last name" aria-label="Last name">
+    </div>
+</div> -->
+

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+{% include 'includes/head_link.html' %}
+
+<body>
+    
+    <header>
+        {% include 'includes/navbar.html' with brand_name='DRIVERS LOGSHEET' %}
+        {% include 'includes/message.html' %}
+    </header>
+
+    {% block content %}
+
+    {% endblock content %}
+
+<!--    Footer -->
+    {% include 'includes/footer.html' %}
+
+    {% include 'includes/scripts.html' %}
+</body>
+
+</html>

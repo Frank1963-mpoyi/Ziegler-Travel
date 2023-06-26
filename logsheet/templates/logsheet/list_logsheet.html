@@ -72,13 +72,23 @@ table th {
                                         <tbody>
                                             <tr>
                                                 {% for log in logsheet_queryset %}
-                                                <td>{#{ log.}#}</td>
-                                                <td>System Architect</td>
-                                                <td>61</td>
-                                                <td>Edinburgh</td>
-                                                {#% endfor%#}
+                                                <td>{{ log.datetime_created | date }}</td>
+                                                <td>{{ log.datetime_created | time }}</td>
+                                                <td>{{ log.km_in }}</td>
+                                                <td>{{ log.km_out }}</td>
+                                                <td>{{ log.destination }}</td>
+                                                <td>{{ log.voucher_number }}</td>
+                                                <td>{{ log.cost }}</td>
+                                                <td>{{ log.datetime_created | time }}</td>
+                                                <td>{{ log.km_in }}</td>
+                                                <td>{{ log.vehicule_type }}</td>
+                                                <td>{{ log.driver_name }}</td>
+                                                <td>{{ log.note }}</td>
+                                                <td></td>
+                                                <td></td>
                                             </tr>
-                            
+                                            
+                                            {% endfor%}
                                         </tbody>
                                     </table>
                                 </div>

@@ -21,9 +21,9 @@ class DriverLogsheet(AuditFields):
     
     driver_name = models.CharField('FULL NAME', max_length=250)
     vehicule_type = models.CharField('VEHICULE TYPE', max_length=150)
-    time_in = models.CharField('TIME IN', max_length=50)
+    time_in = models.CharField('TIME IN', max_length=50, blank=True, null=True)
     time_out = models.CharField('TIME OUT', max_length=50)
-    km_in = models.CharField('KM IN', max_length=50)
+    km_in = models.CharField('KM IN', max_length=50, blank=True, null=True)
     km_out = models.CharField('KM OUT', max_length=50)
     destination = models.CharField('DESTINATION', max_length=500)
     voucher_number = models.CharField('VOUCHER NUMBER', max_length=500)

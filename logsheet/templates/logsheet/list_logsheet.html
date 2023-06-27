@@ -7,98 +7,153 @@
 
 <style>
     html,
-body,
-.intro {
-  height: 100%;
-}
+    body,
+    .intro {
+        height: 100%;
+    }
 
-table td,
-table th {
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
-}
+    table td,
+    table th {
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+    }
 
-.card {
-  border-radius: .5rem;
-}
+    .card {
+        border-radius: .5rem;
+    }
 
-.mask-custom {
-  background: rgba(24, 24, 16, .2);
-  border-radius: 2em;
-  backdrop-filter: blur(25px);
-  border: 2px solid rgba(255, 255, 255, 0.05);
-  background-clip: padding-box;
-  box-shadow: 10px 10px 10px rgba(46, 54, 68, 0.03);
-}
+    .mask-custom {
+        background: rgba(24, 24, 16, .2);
+        border-radius: 2em;
+        backdrop-filter: blur(25px);
+        border: 2px solid rgba(255, 255, 255, 0.05);
+        background-clip: padding-box;
+        box-shadow: 10px 10px 10px rgba(46, 54, 68, 0.03);
+    }
+
+    .center-align {
+        text-align: center;
+    }
 </style>
 
 
 <div class="container">
 
-<section class="intro">
-    <div class="bg-image h-100" style="">
-        <div class="mask d-flex align-items-center h-100">
-            <div class="container">
+    <section class="intro">
+        <div class="bg-image h-100" style="">
+            <div class="mask d-flex align-items-center h-100">
+                <div class="container">
 
-                <div class="mt-5 mb-3">
-                    <h1> DRIVER LOGSHEET </h1>
-                </div> 
+                    <div class="mt-5 mb-3">
+                        <h1> DRIVER LOGSHEET </h1>
+                    </div>
 
-                <div class="row justify-content-center">
-                    <div class="col-12">
-                        <div class="card shadow-2-strong" style="background-color: #f5f7fa;">
-                            <div class="card-body">
-                                <div class="table-responsive">
-                                    <table class="table  table-bordered mb-0 table-hover">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">Date</th>
-                                                <th scope="col">Time Out</th>
-                                                <th scope="col">Km Out</th>
-                                                <th scope="col">Client Name</th>
-                                                <th scope="col">Destination</th>
-                                                <th scope="col">Voucher Number</th>
-                                                <th scope="col">Cost</th>
-                                                <th scope="col">Time In</th>
-                                                <th scope="col">Km In</th>
-                                                <th scope="col">Vehicule Type</th>
-                                                <th scope="col">Driver Name</th>
-                                                <th scope="col">Note</th>
-                                                <th scope="col">Edit</th>
-                                                <th scope="col"><i class="bi bi-trash"></i></th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
+                    <!-- Add Button and Search Bar -->
+                    <div class="row justify-content-center">
+                        <div class="col-12">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+
+                                <div class="input-group w-50 ">
+                                    <input type="text" class="form-control" placeholder="Search...">
+                                    <button class="btn btn-outline-secondary" type="button" id="searchButton">
+                                        <span class="fas fa-search"></span>
+                                    </button>
+                                </div>
+
+                                <!-- <button class="btn btn-primary" id="downloadButton">
+                                <span class="bi bi-file-earmark-pdf-fill"></span>
+                                Download PDF
+                                </button> -->
+
+                                <button class="btn btn-primary" id="addButton">
+                                    <span class="bi bi-plus"></span>
+                                    Add LogSheet
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row justify-content-center">
+                        <div class="col-12">
+                            <div class="card shadow-2-strong" style="background-color: #f5f7fa;">
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table  table-bordered mb-0 table-hover">
+                                            <thead style="vertical-align: middle;">
+                                                <tr>
+                                                    <th scope="col">Date</th>
+                                                    <th scope="col">Time Out</th>
+                                                    <th scope="col">Km Out</th>
+                                                    <th scope="col">Client Name</th>
+                                                    <th scope="col">Destination</th>
+                                                    <th scope="col">Voucher Number</th>
+                                                    <th scope="col">Cost</th>
+                                                    <th scope="col">Time In</th>
+                                                    <th scope="col">Km In</th>
+                                                    <th scope="col">Vehicule Type</th>
+                                                    <th scope="col">Driver Name</th>
+                                                    <th scope="col">Note</th>
+                                                    <th scope="col"> <button class="btn btn-primary">
+                                                            <span class="bi bi-pencil-fill"></span>
+                                                            Edit
+                                                        </button> </th>
+                                                    <th scope="col"><button class="btn btn-danger">
+                                                            <span class="bi bi-trash-fill"></span>
+                                                            Delete
+                                                        </button></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+
                                                 {% for log in logsheet_queryset %}
-                                                <td>{{ log.datetime_created | date }}</td>
-                                                <td>{{ log.datetime_created | time }}</td>
-                                                <td>{{ log.km_in }}</td>
-                                                <td>{{ log.km_out }}</td>
-                                                <td>{{ log.destination }}</td>
-                                                <td>{{ log.voucher_number }}</td>
-                                                <td>{{ log.cost }}</td>
-                                                <td>{{ log.datetime_created | time }}</td>
-                                                <td>{{ log.km_in }}</td>
-                                                <td>{{ log.vehicule_type }}</td>
-                                                <td>{{ log.driver_name }}</td>
-                                                <td>{{ log.note }}</td>
-                                                <td></td>
-                                                <td></td>
-                                            </tr>
+                                                <tr>
                                             
-                                            {% endfor%}
-                                        </tbody>
-                                    </table>
+                                                    <td class="center-align">{{ log.datetime_created | date }}</td>
+                                                    <td class="center-align">{{ log.datetime_created | time }}</td>
+                                                    <td class="center-align">{{ log.km_in }}</td>
+                                                    <td class="center-align">{{ log.km_out }}</td>
+                                                    <td class="center-align">{{ log.destination }}</td>
+                                                    <td class="center-align">{{ log.voucher_number }}</td>
+                                                    <td class="center-align">{{ log.cost }}</td>
+                                                    <td class="center-align">{{ log.datetime_created | time }}</td>
+                                                    <td class="center-align">{{ log.km_in }}</td>
+                                                    <td class="center-align">{{ log.vehicule_type }}</td>
+                                                    <td class="center-align">{{ log.driver_name }}</td>
+                                                    <td class="center-align">{{ log.note }}</td>
+                                                    <td class="center-align"><i
+                                                            class="fas fa-edit edit-icon text-primary"></i></td>
+                                                    <td class="center-align"><i
+                                                            class="fas fa-trash  delete-icon text-danger"></i></td>
+                                                </tr>
+                                                {% endfor%}
+                        
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+
                                 </div>
                             </div>
                         </div>
                     </div>
+
+                    <!-- Paginator -->
+                    <div class="pagination justify-content-end mt-3">
+                        <nav aria-label="Page navigation">
+                            <ul class="pagination">
+                                <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                            </ul>
+                        </nav>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
+
 </div>
 {% endblock content %}

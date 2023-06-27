@@ -15,6 +15,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = config('SECRET_KEY')
 
+DEBUG = bool(config("DEBUG"))
+
 ALLOWED_HOSTS = ['*' , 'localhost', '127.0.0.1', 'driver-logsheet-441c01a3345a.herokuapp.com' ]
 
 AUTH_USER_MODEL = 'account.CustomUser'

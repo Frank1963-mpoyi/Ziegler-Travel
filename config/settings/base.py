@@ -15,7 +15,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = config('SECRET_KEY')
 
-ALLOWED_HOSTS = ['localhost','127.0.0.1', 'driver-logsheet-441c01a3345a.herokuapp.com']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'driver-logsheet-441c01a3345a.herokuapp.com']
 
 AUTH_USER_MODEL = 'account.CustomUser'
 AUTHENTICATION_BACKENDS = ('config.backends.AuthBackend',)
@@ -116,6 +116,8 @@ USE_I18N = True
 
 USE_TZ = True
 
+# Honor the 'X-Forwarded-Proto' header fro request.is_secure()
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # Static files (CSS, JavaScript, Images)
 

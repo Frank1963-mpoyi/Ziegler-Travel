@@ -17,8 +17,11 @@ SECRET_KEY = config('SECRET_KEY')
 
 DEBUG = bool(config("DEBUG"))
 
-ALLOWED_HOSTS = ['*' , 'localhost', '127.0.0.1', 'driver-logsheet-441c01a3345a.herokuapp.com' ]
+ALLOWED_HOSTS = ['*']  # Allow all hosts temporarily
 
+if not DEBUG:
+    ALLOWED_HOSTS += ['driver-logsheet-441c01a3345a.herokuapp.com']
+    
 AUTH_USER_MODEL = 'account.CustomUser'
 AUTHENTICATION_BACKENDS = ('config.backends.AuthBackend',)
 

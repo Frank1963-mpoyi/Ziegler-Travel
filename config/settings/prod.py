@@ -5,7 +5,7 @@ DEBUG = not bool(config("DEBUG"))
 
 IS_ENV = 'PRODUCTION'
 
-ALLOWED_HOSTS = ['localhost','127.0.0.1', '']
+ALLOWED_HOSTS = ['localhost','127.0.0.1', 'driver-logsheet-441c01a3345a.herokuapp.com']
 
 MIDDLEWARE += ['whitenoise.middleware.WhiteNoiseMiddleware',]
 

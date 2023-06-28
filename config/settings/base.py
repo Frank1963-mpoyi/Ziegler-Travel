@@ -34,6 +34,8 @@ INSTALLED_APPS = [
     #3rd Party apps
     # 'rest_framework',
     # 'rest_framework.authtoken',
+    
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
